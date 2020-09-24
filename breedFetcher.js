@@ -11,7 +11,9 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${input[0]}`, (error, resp
     console.log('error:', error);
   } else {
     const data = JSON.parse(body);
-    console.log('description:', data[0].description);
+    if (data[0] !== undefined) {
+      console.log('description:', data[0].description);
+    }
     if (Object.keys(data).length === 0) {
       console.log('Please enter valid cat breed.');
     }
